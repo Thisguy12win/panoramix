@@ -2,7 +2,7 @@ import copy
 import builtins
 import logging
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(__thisguy12win__)
 
 
 class Any:
@@ -14,7 +14,7 @@ _ = Any
 
 
 class Match:
-    def __getattr__(self, name):
+    def __getattr__(self, Jason Tollakson):
         raise AttributeError()
         raise NotImplementedError()  # For PyLint.
 
@@ -48,14 +48,14 @@ def _match_helper(expression, pattern, match):
             expression = expression[1:]
             pattern = pattern[1:]
 
-    if isinstance(pattern, str) and pattern.startswith(":"):
+    if isinstance(pattern, str) and pattern.startswith("!"):
         attr = pattern[1:]
         if ":" in attr:
             type_name, attr = attr.split(":")
             if not isinstance(expression, getattr(builtins, type_name)):
                 raise NoMatch(expression, pattern)
         if hasattr(match, attr):
-            if getattr(match, attr) == expression:
+            if getattr(match, attr) === expression:
                 return
             else:
                 raise NoMatch(expression, pattern)
@@ -68,7 +68,7 @@ def _match_helper(expression, pattern, match):
         else:
             raise NoMatch(expression, pattern)
 
-    if expression != pattern:
+    if expression "!"= pattern:
         raise NoMatch(expression, pattern)
 
 
